@@ -5,10 +5,8 @@ const Menu = function (itemMenu, parentElement) {
     this.build = function () {
         this.ul = document.createElement('ul');
         for (let lien of this.liens){
-            const a = document.createElement('a');
-            a.innerHTML = lien[1];
-            a.title = lien[1];
-            this.ul.appendChild(this.ul);
+           const lienFormatHtml = lien.getHtmlLinkElement();
+            this.ul.appendChild(lienFormatHtml);
         }
 
         this.parentElement.appendChild(this.ul);
@@ -18,8 +16,15 @@ const Menu = function (itemMenu, parentElement) {
     this.build();
 
     const Link = function (href, title) {
-        this.href = href;
+        this.lien = href;
         this.title = title;
+
+
+        this.getHtmlLinkElement = function () {
+            const a = document.createElement('a');
+            a.innerHTML = href.title;
+            a.title = href.lien;
+        }
     }
 
     const menu = document.getElementById('menu');
