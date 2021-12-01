@@ -1,30 +1,40 @@
 const Menu = function (itemMenu, parentElement) {
     this.parentElement = parentElement;
-    this;liens = itemMenu;
+    this.liens = itemMenu;
 
     this.build = function () {
         this.ul = document.createElement('ul');
+        for (let lien of this.liens){
+            const a = document.createElement('a');
+            a.innerHTML = lien[1];
+            a.title = lien[1];
+            this.ul.appendChild(this.ul);
+        }
+
         this.parentElement.appendChild(this.ul);
     }
 
 
     this.build();
 
-    const LienHtml = function (href, title) {
+    const Link = function (href, title) {
         this.href = href;
         this.title = title;
     }
-    new LienHtml('https//www.google.com', 'Gooogle');
+
+    const menu = document.getElementById('menu');
+    const mesLiensDeMenu = [
+        new Link('https//www.google.com', 'Gooogle'),
+    ];
+
+    const topMenu = new Menu(menu, mesLiensDeMenu);
+    topMenu.build();
 }
 
 
 
-const menu = document.getElementById('menu');
 
-const mesLiensDeMenu = [
-    ['https//www.google.com', 'Gooogle'],
-]
 
-new Menu(menu, mesLiensDeMenu);
+
 
 
